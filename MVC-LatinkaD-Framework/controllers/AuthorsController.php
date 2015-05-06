@@ -9,6 +9,7 @@ class AuthorsController extends BaseController {
     }
 
     public function index() {
+        $this->authorize();
         $this->authors = $this->db->getAll();
         $this->renderView();
     }

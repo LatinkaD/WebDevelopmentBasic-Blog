@@ -12,6 +12,10 @@ abstract class BaseController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->isPost = true;
         }
+        if (isset($_SESSION['username'])) {
+            $this->isLoggedIn = true;
+        }
+
         $this->onInit();
     }
 
@@ -61,6 +65,13 @@ abstract class BaseController {
         }
 
         $this->redirectToUrl($url);
+    }
+
+    public function authorize() {
+        if (! $this->isLoggedIn) {
+            $this->addErrorMessage("Please login first.");
+            $this->redirect("accounts", "login");
+        }
     }
 
     function addMessage($msg, $type) {

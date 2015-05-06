@@ -25,3 +25,13 @@ li.info {
 li.error {
     background: #f77;
 }
+
+#logged-in-info {
+    float: right;
+}
+
+#logged-in-info form {
+    display: inline-block;
+    margin-top: 35%;
+    margin-right: 20px;
+}
