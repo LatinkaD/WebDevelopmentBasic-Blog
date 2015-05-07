@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `mvc` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE  IF NOT EXISTS `blog` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `mvc`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win32 (x86)
 --
--- Host: localhost    Database: mvc
+-- Host: localhost    Database: blog
 -- ------------------------------------------------------
 -- Server version	5.6.21
 
@@ -18,56 +18,31 @@ USE `mvc`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `authors`
+-- Table structure for table `posts`
 --
 
-DROP TABLE IF EXISTS `authors`;
+DROP TABLE IF EXISTS `posts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `authors` (
+CREATE TABLE `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `authors`
---
-
-LOCK TABLES `authors` WRITE;
-/*!40000 ALTER TABLE `authors` DISABLE KEYS */;
-INSERT INTO `authors` VALUES (1,'Pesho'),(2,'Kiro'),(3,'Maria'),(6,'Nakov');
-/*!40000 ALTER TABLE `authors` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `books`
---
-
-DROP TABLE IF EXISTS `books`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `books` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) NOT NULL,
-  `isbn` varchar(20) DEFAULT NULL,
-  `url` varchar(200) DEFAULT NULL,
-  `author_id` int(11) DEFAULT NULL,
+  `content` text NOT NULL,
+  `postDate` date NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_books_authors_idx` (`author_id`),
-  CONSTRAINT `fk_books_authors` FOREIGN KEY (`author_id`) REFERENCES `authors` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_posts_users_idx` (`user_id`),
+  CONSTRAINT `fk_posts_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `books`
+-- Dumping data for table `post`
 --
 
-LOCK TABLES `books` WRITE;
-/*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,'PHP for Dummies',NULL,NULL,NULL),(2,'PHP for Beginners','123-456-789',NULL,1),(3,'PHP Quick Start',NULL,'http://php.net',2);
-/*!40000 ALTER TABLE `books` ENABLE KEYS */;
+LOCK TABLES `posts` WRITE;
+/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` VALUES (1,'Start by doing what\'s necessary; then do what\'s possible, and suddenly you are doing the impossible.', '2015-5-04', NULL),(2,'The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart.', '2015-5-04',NULL),(3,'Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven\'t found it yet, keep looking. Don\'t settle. As with all matters of the heart, you\'ll know when you find it.','2015-5-05', 2), (4,'Start by doing what\'s necessary; then do what\'s possible, and suddenly you are doing the impossible.','2015-5-05', 1), (5,'My mission in life is not merely to survive, but to thrive; and to do so with some passion, some compassion, some humor, and some style.', '2015-5-06', NULL), (6,'I believe in pink. I believe that laughing is the best calorie burner. I believe in kissing, kissing a lot. I believe in being strong when everything seems to be going wrong. I believe that happy girls are the prettiest girls. I believe that tomorrow is another day and I believe in miracles.', '2015-5-06', 3), (7,'Today I choose life. Every morning when I wake up I can choose joy, happiness, negativity, pain... To feel the freedom that comes from being able to continue to make mistakes and choices - today I choose to feel life, not to deny my humanity but embrace it.', '2015-5-06', 1), (8,'Don\'t limit yourself. Many people limit themselves to what they think they can do. You can go as far as your mind lets you. What you believe, remember, you can achieve.', '2015-5-07', 2), (9,'If you believe in yourself and have dedication and pride - and never quit, you\'ll be a winner. The price of victory is high but so are the rewards.', '2015-5-07', 1);
+/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

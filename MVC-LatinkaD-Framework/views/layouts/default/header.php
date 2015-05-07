@@ -20,6 +20,7 @@
                 <li><a href="/books">Books</a></li>
             <?php endif; ?>
         </ul>
+
         <?php if ($this->isLoggedIn) : ?>
             <div id="logged-in-info">
                 <span>Hello, <?php echo $_SESSION['username']; ?></span>

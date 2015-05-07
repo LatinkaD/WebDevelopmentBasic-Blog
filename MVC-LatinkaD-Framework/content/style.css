@@ -1,5 +1,21 @@
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+* {
+    font-family: 'Lobster', cursive;
+    color: #f3fdff;
+    /*text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);*/
+}
+
+body {
+    background: url('/content/images/think-positive.jpg') no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+}
+
 body > header {
-    background: #eee;
+    background-color: rgba(72, 72, 72, 0.4);
+    border-radius: 10px;
     padding: 5px;
 }
 
@@ -9,13 +25,23 @@ body > header ul, body > header ul > li {
     vertical-align: middle;
 }
 
+body > header > a > img {
+    width: 10%;
+    border-radius: 8px;
+}
+
 body > header ul > li {
     display: inline-block;
 }
 
+body a {
+    text-decoration: none;
+}
+
 body > footer {
-    background: #eee;
+    background-color: rgba(72, 72, 72, 0.4);
     text-align: center;
+    border-radius: 4px;
 }
 
 li.info {
@@ -24,6 +50,10 @@ li.info {
 
 li.error {
     background: #f77;
+}
+
+.button {
+    color: deeppink;
 }
 
 #logged-in-info {

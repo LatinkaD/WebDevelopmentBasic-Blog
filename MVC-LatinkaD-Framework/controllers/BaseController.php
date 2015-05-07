@@ -6,12 +6,16 @@ abstract class BaseController {
     protected $layoutName = DEFAULT_LAYOUT;
     protected $isViewRendered = false;
     protected $isPost = false;
+    protected $isLoggedIn;
+    protected $validationErrors;
+    protected $formValues;
 
     function __construct($controllerName) {
         $this->controllerName = $controllerName;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->isPost = true;
         }
+
         if (isset($_SESSION['username'])) {
             $this->isLoggedIn = true;
         }
@@ -68,10 +72,26 @@ abstract class BaseController {
     }
 
     public function authorize() {
-        if (! $this->isLoggedIn) {
+        if (!$this->isLoggedIn) {
             $this->addErrorMessage("Please login first.");
             $this->redirect("accounts", "login");
         }
+    }
+
+    public function addValidationError($field, $message) {
+        $this->validationErrors[$field] = $message;
+    }
+
+    public function getValidationError($field) {
+        return $this->validationErrors[$field];
+    }
+
+    public function addFieldValue($field, $value) {
+        $this->formValues[$field] = $value;
+    }
+
+    public function getFieldValue($field) {
+        return $this->formValues[$field];
     }
 
     function addMessage($msg, $type) {
