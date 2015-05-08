@@ -9,25 +9,22 @@
                         <form action="/comments/add">
                             <a href="/comments/add" class="button"/>Add comment</a>
                         </form>
+
                         <form action="/posts/delete">
                             <a href="/posts/delete/<?= $post[0] ?>" class="button">Delete</a>
                         </form>
-                        <form action="/tags">
-                            <p class="button">Tags: </p>
-                        </form>
-                        <p><?php echo $commentCount ?></p>
+
+                        <p><?php echo $this->commentCount ?></p>
+
                         <?php foreach ($this->comments as $comment): ?>
                             <div id="comments">
                                 <p><?php htmlspecialchars($comment['comment']) ?></p>
                             </div>
                         <?php endforeach; ?>
+
                     </div>
                 <?php endif; ?>
-                    <!-- <?php foreach ($this->filtTags as $tag): ?>
-                    <div id="tags">
-                        <p><?php htmlspecialchars($tag['tag']) ?></p>
-                    </div>
-                <?php endforeach; ?>-->
+
             </form>
         <?php endforeach; ?>
 

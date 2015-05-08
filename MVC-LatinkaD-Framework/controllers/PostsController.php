@@ -17,6 +17,10 @@ class PostsController extends BaseController {
         $this->renderView(__FUNCTION__);
     }
 
+    public function commentsCount() {
+
+    }
+
     public function showPosts() {
         $this->posts = $this->db->getAll();
         $this->renderView(__FUNCTION__, false);
