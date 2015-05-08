@@ -2,7 +2,7 @@
 
 * {
     font-family: 'Lobster', cursive;
-    color: #f3fdff;
+    text-align: center;
     /*text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);*/
 }
 
@@ -11,57 +11,130 @@ body {
     background-size: cover;
     background-attachment: fixed;
     height: 100%;
+    padding: 20px;
 }
 
-body > header {
+body .navbar-default {
     background-color: rgba(72, 72, 72, 0.4);
     border-radius: 10px;
+    padding: 10px;
+    height: 150px;
+    border: none;
+    font-size: 26px;
+    line-height: 30px;
+}
+
+#posts {
+    display: flex;
+    flex-direction: column;
+}
+
+body .container > form {
+    background-color: rgba(72, 72, 72, 0.4);
+    border-radius: 10px;
+    padding: 10px;
+    width: 400px;
+    text-align: center;
+    border: none;
+    float: left;
+    left: 50%;
+    margin: 15px auto;
+}
+
+#formInForm {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: auto 10%;
+}
+
+body .jumbotron {
+    background-color: rgba(72, 72, 72, 0.4);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    border: none;
+}
+
+.jumbotron .logReg {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 24px;
+    color: #fff451;
+}
+
+.jumbotron .logReg a {
+    color: #fff451;
+    padding: 0px 10px;
+    text-decoration: none;
+}
+
+.paging {
+    padding: 0px 10px;
+    text-decoration: none;
+    color: #fff451;
+    font-size: 18px;
+}
+
+.container {
+    margin: 10px;
     padding: 5px;
 }
 
-body > header > a > img,
-body > header ul, body > header ul > li {
-    display: inline-block;
-    vertical-align: middle;
+body .navbar-default > .container > li > a {
+    color: #fff451;
 }
 
-body > header > a > img {
+.navbar-default > .container > a > img,
+.navbar-default .navbar-nav .navbar-left,
+.navbar-default .navbar-nav .navbar-left > li {
+    display: flex;
+    flex-direction: row;
+    float: left;
+    color: #fff451;
+}
+
+body .navbar-default > .container > a > img {
     width: 10%;
     border-radius: 8px;
-}
-
-body > header ul > li {
-    display: inline-block;
+    float: left;
 }
 
 body a {
     text-decoration: none;
 }
 
-body > footer {
+body .navbar-static-bottom {
     background-color: rgba(72, 72, 72, 0.4);
     text-align: center;
     border-radius: 4px;
-}
-
-li.info {
-    background: #7f7;
-}
-
-li.error {
-    background: #f77;
+    height: 50px;
+    border: none;
 }
 
 .button {
-    color: deeppink;
+    color: #fff451;
+    border-radius: 4px;
+    background-color: rgba(72, 72, 72, 0.4);
+    border: none;
 }
 
-#logged-in-info {
+.jumbotron .logReg a:hover,
+.button:hover {
+    color: #77ff77;
+}
+
+p.info {
+    background: #7f7;
+}
+
+p.error {
+    background: #f77;
+}
+
+p.info, p.error {
+    width: 150px;
+    border-radius: 2px;
     float: right;
 }
 
-#logged-in-info form {
-    display: inline-block;
-    margin-top: 35%;
-    margin-right: 20px;
-}

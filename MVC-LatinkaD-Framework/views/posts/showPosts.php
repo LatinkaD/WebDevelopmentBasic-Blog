@@ -1,4 +1,5 @@
-<div>
+
+<div class="container">
     <ul>
         <?php foreach ($this->posts as $post) : ?>
         <li>
