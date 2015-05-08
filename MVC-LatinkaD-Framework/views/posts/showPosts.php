@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="formContainer">
     <ul>
         <?php foreach ($this->posts as $post) : ?>
         <li>

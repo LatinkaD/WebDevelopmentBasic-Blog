@@ -13,15 +13,6 @@
                         <form action="/posts/delete">
                             <a href="/posts/delete/<?= $post[0] ?>" class="button">Delete</a>
                         </form>
-
-                        <p><?php echo $this->commentCount ?></p>
-
-                        <?php foreach ($this->comments as $comment): ?>
-                            <div id="comments">
-                                <p><?php htmlspecialchars($comment['comment']) ?></p>
-                            </div>
-                        <?php endforeach; ?>
-
                     </div>
                 <?php endif; ?>
 

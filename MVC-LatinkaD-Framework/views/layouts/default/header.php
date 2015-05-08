@@ -29,17 +29,18 @@
                            <li><a href="/posts/add">New Post</a></li>
                        <?php endif; ?>
                 </ul>
+                <div class="logged">
+                    <?php if ($this->isLoggedIn) : ?>
+                        <div id="logged-in-info">
+                            <form action="/accounts/logout" id="headerForm">
+                                <label for="button">Hello, <?php echo $_SESSION['username']; ?></label>
+                                <input type="submit" value="Logout" class="button"/>
+                            </form>
+                        </div>
+                    <?php endif; ?>
+                    <?php include('messages.php'); ?>
+                </div>
             </div>
-            <div class="logged">
-                <?php if ($this->isLoggedIn) : ?>
-                    <div id="logged-in-info">
-                        <form action="/accounts/logout" id="headerForm">
-                            <label for="button">Hello, <?php echo $_SESSION['username']; ?></label>
-                            <input type="submit" value="Logout" class="button"/>
-                        </form>
-                    </div>
-                <?php endif; ?>
-                <?php include('messages.php'); ?>
-            </div>
+
         </div>
     </div>
