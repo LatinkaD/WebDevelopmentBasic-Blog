@@ -13,6 +13,8 @@
                         <form action="/posts/delete">
                             <a href="/posts/delete/<?= $post[0] ?>" class="button">Delete</a>
                         </form>
+
+                        <form action="comments/index"></form>
                     </div>
                 <?php endif; ?>
 

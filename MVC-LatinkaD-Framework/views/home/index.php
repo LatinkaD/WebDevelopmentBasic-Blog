@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="jumboColumn">
     <div class="jumbotron col-md-9">
         <h1>Welcome to home!</h1>
         <p>
@@ -11,14 +11,13 @@
             <a href="/accounts/login">Login</a>
             <a href="/accounts/register">Register</a>
 
-            <input type="submit" id="show-posts" value="Show Posts" class="button" />
-        </div>
+            <button id="show-posts" class="button">Show Posts</button>
 
-        <div id="posts"></div>
+        </div>
 
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <script>
-            $('#show-books').on('click', function(ev) {
+            $('#show-posts').on('click', function(ev) {
                 $.ajax({
                     url: 'posts/showPosts',
                     method: 'GET'
@@ -28,4 +27,6 @@
             });
         </script>
     </div>
+
+    <div id="posts"></div>
 </div>

@@ -1,10 +1,14 @@
 
-<div class="formContainer">
+<div>
     <ul>
         <?php foreach ($this->posts as $post) : ?>
-        <li>
-            <?php echo $post['content']; ?>
-        </li>
+            <div id="postsContainer">
+                <li>
+                    <?php echo $post['content']; ?>
+                    <br/>
+                    <?php echo $post['postDate']; ?>
+                </li>
+            </div>
         <?php endforeach; ?>
     </ul>
 </div>

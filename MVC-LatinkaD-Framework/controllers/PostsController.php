@@ -9,7 +9,6 @@ class PostsController extends BaseController {
     }
 
     public function index($page = 0, $pageSize = 5) {
-        $this->authorize();
         $from = $page * $pageSize;
         $this->page = $page;
         $this->pageSize = $pageSize;
