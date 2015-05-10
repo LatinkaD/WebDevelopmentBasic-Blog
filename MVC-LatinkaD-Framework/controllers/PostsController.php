@@ -20,6 +20,20 @@ class PostsController extends BaseController {
 
     }
 
+    public function singlePost($id) {
+        $this->id = $id;
+        $this->post = $this->db->getById($id);
+        $this->comments = $this->db->getAllCommentsByPostId($id);
+        $this->renderView(__FUNCTION__);
+    }
+
+    public function showComments($id) {
+        $this->id = $id;
+        $this->post = $this->db->findCommentsByPostId($id);
+        $this->comments = $this->db->getAllCommentsByPostId($id);
+        $this->renderView();
+    }
+
     public function showPosts() {
         $this->posts = $this->db->getAll();
         $this->renderView(__FUNCTION__, false);

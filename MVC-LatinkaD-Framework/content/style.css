@@ -56,13 +56,6 @@ body .formContainer{
     margin: 10px auto;
 }
 
-body .formContainer input, body .formContainer textarea {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin: 10px;
-}
-
 #formInForm {
     display: flex;
     flex-direction: column;

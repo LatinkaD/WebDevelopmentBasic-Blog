@@ -2,21 +2,22 @@
 
         <?php foreach($this->posts as $post): ?>
             <form id="post" action="/posts/index" method="GET">
-                <p><?php echo htmlspecialchars($post[1]) ?></p>
+                <p><?php echo substr(htmlspecialchars($post[1]), 0, 150); echo "..."; ?></p>
                 <span><?php echo $post[2] ?></span>
-
+                <a href="/posts/singlePost" class="buttons">Read more..</a>
+                
                 <div id="formInForm">
-                <form action="/comments/add">
-                    <a href="/comments/add" class="button"/>Add comment</a>
-                </form>
-
-                <?php if ($this->isLoggedIn) : ?>
-                    <form action="/posts/delete">
-                        <a href="/posts/delete/<?= $post[0] ?>" class="button">Delete</a>
+                    <form action="/comments/add">
+                        <a href="/comments/add" class="button"/>Add comment</a>
                     </form>
-                <?php endif; ?>
 
-                <button id="show-comments" name="show-comments" class="button">Show Comments</button>
+                    <?php if ($this->isLoggedIn) : ?>
+                        <form action="/posts/delete">
+                            <a href="/posts/delete/<?= $post[0] ?>" class="button">Delete</a>
+                        </form>
+                    <?php endif; ?>
+
+                    <button id="show-comments" name="show-comments" class="button">Show Comments</button>
                 </div>
 
                 <div id="#comments"></div>

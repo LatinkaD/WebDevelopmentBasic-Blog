@@ -13,6 +13,32 @@ class PostsModel extends BaseModel {
         return $result;
     }
 
+    public function getById($id) {
+        $statement = self::$db->prepare("SELECT * FROM comments WHERE post_id = ?");
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        return $statement->get_result();
+    }
+
+    public function getAllCommentsByPostId($postId) {
+        $statement = self::$db->prepare("
+            SELECT comment, post_id
+            FROM comments c INNER JOIN users u
+            ON c.user_id = u.id
+            WHERE post_id = ?");
+        $statement->bind_param("i", $postId);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_all();
+        return $result;
+    }
+
+    public function findCommentsByPost($id) {
+        $statement = self::$db->prepare("SELECT * FROM comments WHERE post_id = ? ");
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        return $statement->get_result();
+    }
+
     public function addPost($content) {
         if ($content == '') {
             return false;
