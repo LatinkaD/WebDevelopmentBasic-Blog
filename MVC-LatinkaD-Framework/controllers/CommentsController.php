@@ -8,14 +8,13 @@ class CommentsController extends BaseController {
         $this->db = new CommentsModel();
     }
 
-    public function index() {
-        $this->authorize();
-        $this->comments = $this->db->getAll();
-        $this->renderView();
+    public function index($postId) {
+        $this->postId = $postId;
+        $this->comments = $this->db->getCommentsForPost($postId);
+        $this->renderView(__FUNCTION__);
     }
 
     public function add() {
-        $this->authorize();
         if($this->isPost) {
             $comment = $_POST['comment'];
             if (strlen($comment) < 2) {

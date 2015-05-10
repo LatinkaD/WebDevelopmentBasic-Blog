@@ -8,10 +8,11 @@
         </p>
 
         <div class="logReg">
-            <a href="/accounts/login">Login</a>
-            <a href="/accounts/register">Register</a>
-
-            <button id="show-posts" class="button">Show Posts</button>
+            <?php if(!$this->isLoggedIn): ?>
+                <a href="/accounts/login">Login</a>
+                <a href="/accounts/register">Register</a>
+                <button id="show-posts" class="button">Show Posts</button>
+            <?php endif; ?>
 
         </div>
 

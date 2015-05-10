@@ -1,9 +1,12 @@
 <?php
 
 class CommentsModel extends BaseModel {
-    public function getAll() {
-        $statement = self::$db->query("SELECT * FROM comments");
-        return $statement->fetch_all(MYSQL_ASSOC);
+    public function getCommentsForPost($postId) {
+        $statement = self::$db->prepare("SELECT * FROM comments c JOIN posts p ON p.id == c.post_id WHERE p.id = ?");
+        $statement->bind_param("i", $postId);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_all();
+        return $result;
     }
 
     public function commentCount() {
