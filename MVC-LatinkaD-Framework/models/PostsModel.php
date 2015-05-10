@@ -23,8 +23,8 @@ class PostsModel extends BaseModel {
     public function getAllCommentsByPostId($postId) {
         $statement = self::$db->prepare("
             SELECT comment, post_id
-            FROM comments c INNER JOIN users u
-            ON c.user_id = u.id
+            FROM comments c INNER JOIN posts p
+            ON c.user_id = p.id
             WHERE post_id = ?");
         $statement->bind_param("i", $postId);
         $statement->execute();
@@ -32,7 +32,7 @@ class PostsModel extends BaseModel {
         return $result;
     }
 
-    public function findCommentsByPost($id) {
+    public function findCommentsByPostId($id) {
         $statement = self::$db->prepare("SELECT * FROM comments WHERE post_id = ? ");
         $statement->bind_param("i", $id);
         $statement->execute();

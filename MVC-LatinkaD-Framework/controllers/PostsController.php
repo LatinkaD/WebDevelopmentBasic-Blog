@@ -23,14 +23,14 @@ class PostsController extends BaseController {
     public function singlePost($id) {
         $this->id = $id;
         $this->post = $this->db->getById($id);
-        $this->comments = $this->db->getAllCommentsByPostId($id);
+        $this->comments = $this->db->findCommentsByPostId($id);
         $this->renderView(__FUNCTION__);
     }
 
     public function showComments($id) {
         $this->id = $id;
-        $this->post = $this->db->findCommentsByPostId($id);
-        $this->comments = $this->db->getAllCommentsByPostId($id);
+        $this->post = $this->db->getById($id);
+        $this->comments = $this->db->findCommentsByPostId($id);
         $this->renderView();
     }
 

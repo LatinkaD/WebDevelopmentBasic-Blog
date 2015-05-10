@@ -16,6 +16,32 @@ class CommentsModel extends BaseModel {
         return $count;
     }
 
+    public function getById($id) {
+        $statement = self::$db->prepare("SELECT * FROM comments WHERE post_id = ?");
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        return $statement->get_result();
+    }
+
+    public function getAllCommentsByPostId($postId) {
+        $statement = self::$db->prepare("
+            SELECT comment, post_id
+            FROM comments c INNER JOIN posts p
+            ON c.user_id = p.id
+            WHERE post_id = ?");
+        $statement->bind_param("i", $postId);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_all();
+        return $result;
+    }
+
+    public function findCommentsByPostId($id) {
+        $statement = self::$db->prepare("SELECT * FROM comments WHERE post_id = ? ");
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        return $statement->get_result();
+    }
+
     public function addComment($comment)
     {
         if ($comment == '') {
@@ -23,8 +49,8 @@ class CommentsModel extends BaseModel {
         }
 
         $statement = self::$db->prepare(
-            "INSERT INTO comments(id, post_id, user_id, comment) VALUES(NULL, NULL, NULL, ?)");
-        $statement->bind_param("s", $comment);
+            "INSERT INTO comments(id, post_id, user_id, comment) VALUES(NULL, ?, NULL, ?)");
+        $statement->bind_param("is", , $comment);
         $statement->execute();
         return $statement->affected_rows > 0;
     }

@@ -8,10 +8,11 @@ class CommentsController extends BaseController {
         $this->db = new CommentsModel();
     }
 
-    public function index($postId) {
-        $this->postId = $postId;
-        $this->comments = $this->db->getCommentsForPost($postId);
-        $this->renderView(__FUNCTION__);
+    public function index($id) {
+        $this->id = $id;
+        $this->post = $this->db->getById($id);
+        $this->comments = $this->db->findCommentsByPostId($id);
+        $this->renderView();
     }
 
     public function add() {

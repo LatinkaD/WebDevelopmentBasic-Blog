@@ -4,7 +4,7 @@
             <form id="post" action="/posts/index" method="GET">
                 <p><?php echo substr(htmlspecialchars($post[1]), 0, 150); echo "..."; ?></p>
                 <span><?php echo $post[2] ?></span>
-                <a href="/posts/singlePost" class="buttons">Read more..</a>
+                <a href="/posts/singlePost/ <?= $post[0] ?>" class="buttons">Read more..</a>
                 
                 <div id="formInForm">
                     <form action="/comments/add">
@@ -17,10 +17,8 @@
                         </form>
                     <?php endif; ?>
 
-                    <button id="show-comments" name="show-comments" class="button">Show Comments</button>
+                    <a href="/comments/index/<?= $post[0] ?>" class="button" id="show-comments">Show Comments</a>
                 </div>
-
-                <div id="#comments"></div>
             </form>
         <?php endforeach; ?>
 
@@ -29,15 +27,4 @@
 <a href="/posts/index/<?= $this->page + 1 ?>/<?= $this->pageSize?>" class="paging">Next</a>
 
 <a href="/posts/add" class="paging">Add new post</a>
-
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script>
-    $('#show-comments').on('click', function(ev) {
-        $.ajax({
-            url: 'comments/index',
-            method: 'GET'
-        }).success(function (data) {
-            $('#comments').html(data);
-        })
-    });
 
